@@ -1,0 +1,109 @@
+
+p{
+    color: red;
+    /* justify-content: flex-start; */
+}
+
+label{
+    color: red;
+}
+
+.seatDefault {
+    width:20px;
+    height:20px;
+    margin: 5px;
+    cursor:pointer;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seatStandart {
+    border: 2px solid white;
+    border-radius: 20px;
+}
+.seatVip {
+    border: 2px solid green;
+    border-radius: 20px;
+}
+.seatDeluxe {
+    border: 2px solid blue;
+    border-radius: 20px;
+}
+
+.selected{
+    background-color: grey;
+    color: grey;
+}
+
+.screen{
+    background-color: white;
+    width: 300px;
+    height: 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.selecting{
+    background-color: white;
+}
+
+.seatC, .seatK{
+    margin-left: 30px;
+}
+
+.footer{
+    display: flex;
+}
+
+.left{
+    margin-right:100px;
+}
+
+.footerSelected,.footerSelecting, .footerType{
+    display: flex;
+    flex-direction: row;
+}
+.leftSelected{
+    width:20px;
+    height: 20px;
+    border-radius: 15px;
+    background-color: grey;
+    margin-top: 17px;
+    margin-right: 10px;
+}
+
+.leftSelecting{
+    width:20px;
+    height: 20px;
+    border-radius: 15px;
+    background-color: white;
+    margin-top: 17px;
+    margin-right: 10px;
+}
+
+.rightStandard{
+    width:20px;
+    height:20px;
+    border-radius: 15px;
+    border: 1px solid white;
+    margin-top: 17px;
+    margin-right: 10px;
+}
+.rightVip{
+    width:20px;
+    height:20px;
+    border-radius: 15px;
+    border: 1px solid green;
+    margin-top: 17px;
+    margin-right: 10px;
+}
+.rightDeluxe{
+    width:20px;
+    height:20px;
+    border-radius: 15px;
+    border: 1px solid blue;
+    margin-top: 17px;
+    margin-right: 10px;
+}
