@@ -14,28 +14,57 @@ function Home () {
   let count = 0;
   let countArr = [];
   let typeArr = [];
+  let standartArr = [];
+  let vipArr = [];
+  let deluxeArr = [];
+  let totalprice = 0;
   
-  const handleSubmit=()=>{
-    const elements = document.getElementsByTagName("button")
+  let d = new Date();
+  let year = d.getFullYear();
+  let month = d.getMonth()+1;
+  let day = d.getDate();
+
+  const date = day+'/'+month+'/'+year
+  const addArr = () =>{
+    for(var i = 0; i < typeArr.length; i++){
+      if(typeArr[i]==='standart'){
+        standartArr.push(typeArr[i])
+      }else if(typeArr[i]==='vip'){
+        vipArr.push(typeArr[i]);
+      }else if(typeArr[i]==='deluxe'){
+        deluxeArr.push(typeArr[i])
+      }
+    }
+  }
+  
+  const handlePay=(event)=>{
     const x = countArr.length;
-    // alert("Sum seats was chose: " +x);
-    // alert(typeArr)
-    // alert.apply(load);
     confirmAlert({
       title:'Ban muon dat nhung cho nay: ',
-      message:("Tong so ghe da dat la: "+ x + " ,Loai ghe: "+typeArr),
+      message:("Tong so ghe da dat la: "+ x 
+      + " ,Stan: " + standartArr.length
+      + " ,Vip: "+ vipArr.length
+      + " ,Deluxe: "+ deluxeArr.length
+      + " ,Total: "+totalprice),
       buttons:[
         {
           label:'Yes',
           onClick:()=>window.location.reload(),
         },
-        {
-          label:'No',
-          
-        }
-        
       ]
     })
+  }
+  
+  const handleSubmit=(event)=>{
+    addArr()
+    event.currentTarget.disabled = true;
+    const x = countArr.length;
+    const total = (standartArr.length * 60000) 
+    + (vipArr.length * 90000) 
+    + (deluxeArr.length * 110000)
+    totalprice += total
+    document.getElementById('price').innerText = totalprice
+    
   }
   
   const removeValue = (event) =>{
@@ -54,11 +83,10 @@ function Home () {
       }
       if(countArr.length>6){
         event.currentTarget.style.backgroundColor=null ;
-        alert("not chose;")
+        alert("Ban chi duoc chon toi da 6 ghe!!!")
         countArr.pop()
         typeArr.pop()
       }
-      console.log(typeArr)
     }
     const container = {
       display:'flex',
@@ -337,8 +365,30 @@ function Home () {
                   </div>
                   </div>
               </div>
-              <div className='{styles.submit'>
-                <button onClick={handleSubmit} style={{backgroundColor:'white'}}>Submit</button>
+              <div className={styles.submit}>
+                <div className={styles.head}>
+                  <div>
+                    <h6>CGV Cinema</h6>
+                    <div className={styles.time}>
+                      <p>9h00-12h00</p>
+                      <hr></hr>
+                      <p>{date}</p>   
+                    </div>
+                    <h6>*Nên submit để cập nhật giá</h6>
+                  </div>
+                  
+                </div>
+               <div className={styles.foot}>
+                <p id='price'>{totalprice}</p>
+                <div className={styles.button}>
+                  <div className={styles.button1}>
+                    <button onClick={handleSubmit}>Submit</button>
+                  </div>
+                  <div className={styles.button2} >
+                    <button onClick={handlePay}>Pay</button>
+                  </div>
+                </div>
+               </div>
               </div>
           </div>
         </TransformComponent>
